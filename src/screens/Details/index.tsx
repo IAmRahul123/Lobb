@@ -8,12 +8,13 @@ import {
   Share
 } from 'react-native';
 import React, { useContext } from 'react';
-import RenderHTML from 'react-native-render-html';
+import RenderHTML, { HTMLContentModel, HTMLElementModel } from 'react-native-render-html';
 import { height, width } from '../../config/constants';
 import { useNavigation } from '@react-navigation/native';
 import CardSlice from '../../components/CardSlice';
 import Button from '../../components/Button';
 import { ContextProvider } from '../../store/ContextProvider';
+
 
 const CardDetails: React.FC = () => {
   const navigation = useNavigation();
@@ -29,6 +30,42 @@ const CardDetails: React.FC = () => {
     }
   };
 
+  const tagsStyles = {
+    body: {
+      color: '#000'
+    },
+  };
+
+  const customHTMLElementModels = {
+    'title': HTMLElementModel.fromCustomModel({
+      tagName: 'title',
+      mixedUAStyles: {
+        color: '#000',
+        fontWeight: 'bold',
+      },
+      contentModel: HTMLContentModel.block
+    })
+  };
+
+  function removeHeadTag(htmlString: string) {
+    return htmlString.replace(/<\/?head>/gi, '');
+  }
+
+  function addImageBeforeLastPara(htmlString:string) {
+    let parsedStr = removeHeadTag(htmlString)
+    const imgTag = `<img src="${cardDetails?.thumbNailImage}" width="100%" height=${height * 0.6} style="border-radius:10px; object-fit:contain;" alt="img"/>&nbsp;`;
+
+    // Match all paragraph tags
+    const paragraphs = parsedStr.match(/<p>[\s\S]*?<\/p>/gi);
+    
+    // If there is more than one paragraph, insert the image before the last one
+    if (paragraphs && paragraphs.length > 1) {
+        return parsedStr.replace(paragraphs[paragraphs.length - 1], imgTag + paragraphs[paragraphs.length - 1]);
+    }
+    // Return original HTML if there is only one or no paragraph
+    return parsedStr;
+}
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()} style={styles.closeButton}>
@@ -37,7 +74,7 @@ const CardDetails: React.FC = () => {
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Image
-          source={require("../../assets/img2.jpg")}
+          source={{ uri: cardDetails?.mainImage }}
           resizeMode="cover"
           style={styles.mainImage}
         />
@@ -47,23 +84,24 @@ const CardDetails: React.FC = () => {
         <View style={styles.separator} />
 
         <View style={styles.contentWrapper}>
-          <RenderHTML contentWidth={width} source={{ html: cardDetails?.text || '' }} />
-          <Image
-            source={require("../../assets/img2.jpg")}
-            resizeMode="cover"
-            style={[styles.mainImage, styles.roundedImage]}
+          <RenderHTML
+            contentWidth={width}
+            source={{ html: addImageBeforeLastPara(cardDetails?.text) }}
+            tagsStyles={tagsStyles}
+            customHTMLElementModels={customHTMLElementModels}
+
           />
         </View>
 
         <View style={styles.detailsContainer}>
           <Image
-            source={require("../../assets/img2.jpg")}
+            source={{ uri: cardDetails?.logo }}
             resizeMode="contain"
             style={styles.avatarImage}
           />
           <View style={styles.textContainer}>
-            <Text style={styles.title} numberOfLines={1}>{cardDetails?.title || "No Title"}</Text>
-            <Text style={styles.subTitle} numberOfLines={1}>{cardDetails?.subTitle || "No Subtitle"}</Text>
+            <Text style={styles.title} numberOfLines={1}>{cardDetails?.title || ""}</Text>
+            <Text style={styles.subTitle} numberOfLines={1}>{cardDetails?.subTitle || ""}</Text>
           </View>
           <Button title="REFRESH" onPress={getCardDetails} btnStyle={styles.refreshButton} textStyle={styles.refreshText} />
           <Text style={styles.userName} numberOfLines={1}>In-App Purchase</Text>
@@ -105,6 +143,7 @@ const styles = StyleSheet.create({
   },
   contentWrapper: {
     paddingHorizontal: 12,
+    marginTop: 12
   },
   detailsContainer: {
     backgroundColor: '#d6d6d6',

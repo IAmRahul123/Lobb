@@ -12,7 +12,7 @@ interface ContextType {
 }
 
 // Define types for the card details structure
-interface CardDetailsType {
+export interface CardDetailsType {
   thumbNailImage: string;
   mainImage: string;
   userName: string;
@@ -25,30 +25,13 @@ interface CardDetailsType {
 
 // Create context with default values
 export const ContextProvider = createContext<ContextType | null>(null);
-
-// Default token
-const TOKEN = "eyJhbGciOiJIUzI1NiJ9.dHVzaGFyLnNhaW5pQGxvYmIuaW4.1InOHLHAMipL7u-8BHmP92fVbWADx9iiC9H0N1Cc6pc";
-
-// Default data for card details
-const defaultCardData: CardDetailsType = {
-  thumbNailImage: "https://e0.pxfuel.com/wallpapers/847/217/desktop-wallpaper-android-luffy-ace-sabo-cool-ace-one-piece-thumbnail.jpg",
-  mainImage: "https://www.shutterstock.com/image-photo/cartoon-picture-luffy-one-piece-600nw-2484250149.jpg",
-  userName: "Ankit Hooda",
-  subTitle: "There are many variations of passages",
-  text: "<html>...</html>",
-  id: 2,
-  logo: "https://i.pinimg.com/originals/e7/9c/df/e79cdfc22bbbd73435ec83e9d1f05bc4.jpg",
-  title: "One Piece"
-};
-
-// Define props type for the provider component
 interface ContextProviderProps {
   children: ReactNode;
 }
 
 const ContextProviderComponent: React.FC<ContextProviderProps> = ({ children }) => {
-  const [token, setToken] = useState<string>(TOKEN);
-  const [cardDetails, setCardDetails] = useState<CardDetailsType>(defaultCardData);
+  const [token, setToken] = useState<string>("");
+  const [cardDetails, setCardDetails] = useState<CardDetailsType>();
   const statusBarHeight = StatusBar.currentHeight;
 
   // Fetch token

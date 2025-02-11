@@ -1,27 +1,25 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Button from './Button'
+import { CardDetailsType } from '../store/ContextProvider';
 
 interface CardSliceProps {
-    details?: {
-        title?: string;
-        subTitle?: string;
-    };
+    details: CardDetailsType;
     onRefreshPress: () => void;
 }
 
-const CardSlice: React.FC<CardSliceProps> = ({ details = {}, onRefreshPress }) => {
+const CardSlice: React.FC<CardSliceProps> = ({ details, onRefreshPress }) => {
     return (
         <View style={styles.contentContainer}>
             <View style={styles.userInfoContainer}>
                 <Image
-                    source={require("../assets/img2.jpg")}
+                    source={{uri:details?.logo}}
                     resizeMode='contain'
                     style={styles.avatarImage}
                 />
                 <View style={styles.textContainer}>
-                    <Text style={styles.title} numberOfLines={1}>{details?.title || "No Title"}</Text>
-                    <Text style={styles.subTitle} numberOfLines={1}>{details?.subTitle || "No Subtitle"}</Text>
+                    <Text style={styles.title} numberOfLines={1}>{details?.title || ""}</Text>
+                    <Text style={styles.subTitle} numberOfLines={1}>{details?.subTitle || ""}</Text>
                 </View>
             </View>
 
