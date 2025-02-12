@@ -1,11 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from '../../../config/colors'
+import { getInitials } from '../../../utils/formatter'
 
-const Badge: React.FC = React.memo(() => {
+interface BadgeProps {
+    name: string
+}
+const Badge: React.FC<BadgeProps> = React.memo(({ name }) => {
+    const initials = getInitials(name)
     return (
         <View style={styles.badgeContainer}>
-            <Text style={styles.badgeText}>VS</Text>
+            <Text style={styles.badgeText}>{initials || "VS"}</Text>
         </View>
     )
 })

@@ -4,7 +4,11 @@ import { formatDate } from '../../../utils/formatter'
 import Badge from './Badge'
 import { colors } from '../../../config/colors'
 
-const DateComponent: React.FC = React.memo(() => {
+interface DateComponentProps {
+    name: string
+}
+
+const DateComponent: React.FC<DateComponentProps> = React.memo(({ name }) => {
     //get todays date formatted
     const DATE = formatDate()
     return (
@@ -12,7 +16,7 @@ const DateComponent: React.FC = React.memo(() => {
             <Text style={styles.dateText}>{DATE}</Text>
             <View style={styles.headerRow}>
                 <Text style={styles.todayText}>Today</Text>
-                <Badge />
+                <Badge name={name} />
             </View>
         </View>
     )
