@@ -23,7 +23,7 @@ export interface CardDetailsType {
   title: string;
 }
 
-// Create context with default values
+// Create context
 export const ContextProvider = createContext<ContextType | null>(null);
 interface ContextProviderProps {
   children: ReactNode;

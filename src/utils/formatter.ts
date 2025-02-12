@@ -1,3 +1,5 @@
+
+//function to give todays date in format "MONDAY 12 FEBRUARY"
 export const formatDate = () => {
     const days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
     const months = [

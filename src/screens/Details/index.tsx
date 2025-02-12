@@ -20,6 +20,8 @@ const CardDetails: React.FC = () => {
   const navigation = useNavigation();
   const { cardDetails, getCardDetails = () => { } } = useContext(ContextProvider) || {};
 
+  //function to handle share button click event
+  // For now we are sharing "title" prop of posts
   const handleShare = async () => {
     try {
       await Share.share({
@@ -30,12 +32,15 @@ const CardDetails: React.FC = () => {
     }
   };
 
+  // styles to pass to all tags in html code
+  // need to pass to handle dark mode color change to white
   const tagsStyles = {
     body: {
       color: '#000'
     },
   };
 
+  // TO handle title tag with custom styles as title is not being recognized in mobile
   const customHTMLElementModels = {
     'title': HTMLElementModel.fromCustomModel({
       tagName: 'title',
@@ -47,10 +52,12 @@ const CardDetails: React.FC = () => {
     })
   };
 
+  // to remove head tag as it is stopping title to render
   function removeHeadTag(htmlString: string) {
     return htmlString.replace(/<\/?head>/gi, '');
   }
 
+  // adding thumbnail image to before the last para
   function addImageBeforeLastPara(htmlString:string) {
     let parsedStr = removeHeadTag(htmlString)
     const imgTag = `<img src="${cardDetails?.thumbNailImage}" width="100%" height=${height * 0.6} style="border-radius:10px; object-fit:contain;" alt="img"/>&nbsp;`;

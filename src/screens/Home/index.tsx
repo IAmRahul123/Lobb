@@ -12,6 +12,7 @@ const Home: React.FC = () => {
     if (!context) return null; // Ensure context is available
     const { statusBarHeight, cardDetails, getCardDetails } = context;
 
+    // Function for handling Card Click
     const onCardClick = () => {
         navigation.navigate('Details' as never);
     };

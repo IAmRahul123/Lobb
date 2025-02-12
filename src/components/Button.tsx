@@ -9,6 +9,7 @@ interface ButtonProps {
     textStyle?: TextStyle;
 }
 
+// Custom Button Component with icon (optional) and with customizable styles
 const Button: React.FC<ButtonProps> = React.memo(({ onPress, title, icon = null, btnStyle = {}, textStyle = {} }) => {
     return (
         <TouchableOpacity style={[styles.refreshButton, btnStyle]} onPress={onPress}>

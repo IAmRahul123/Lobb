@@ -8,7 +8,7 @@ interface CardSliceProps {
     onRefreshPress: () => void;
 }
 
-const CardSlice: React.FC<CardSliceProps> = ({ details, onRefreshPress }) => {
+const CardSlice: React.FC<CardSliceProps> = React.memo(({ details, onRefreshPress }) => {
     return (
         <View style={styles.contentContainer}>
             <View style={styles.userInfoContainer}>
@@ -29,7 +29,7 @@ const CardSlice: React.FC<CardSliceProps> = ({ details, onRefreshPress }) => {
             </View>
         </View>
     )
-}
+})
 
 export default CardSlice
 

@@ -4,6 +4,7 @@ import { formatDate } from '../../../utils/formatter'
 import Badge from './Badge'
 
 const DateComponent: React.FC = React.memo(() => {
+    //get todays date formatted
     const DATE = formatDate()
     return (
         <View style={styles.container}>

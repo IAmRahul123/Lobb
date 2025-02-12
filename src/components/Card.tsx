@@ -16,16 +16,15 @@ interface CardProps {
     onRefreshPress: () => void,
     onCardClick: () => void,
 }
-const Card: React.FC<CardProps> = ({
+const Card: React.FC<CardProps> = React.memo(({
     details,
     onRefreshPress = () => { },
     onCardClick = () => { }
 }) => {
     return (
         <TouchableOpacity style={styles.cardContainer} onPress={onCardClick}>
-            {/* require("../assets/img2.jpg" */}
             <Image
-                source={{ uri: details?.mainImage}}
+                source={{ uri: details?.mainImage }}
                 resizeMode='cover'
                 style={styles.mainImage}
                 alt='Main Image'
@@ -34,7 +33,7 @@ const Card: React.FC<CardProps> = ({
             <CardSlice onRefreshPress={onRefreshPress} details={details} />
         </TouchableOpacity>
     );
-};
+})
 
 const styles = StyleSheet.create({
     cardContainer: {
