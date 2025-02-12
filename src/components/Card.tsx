@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { height } from '../config/constants';
 import CardSlice from './CardSlice';
-import { CardDetailsType } from '../store/ContextProvider';
+import { CardDetailsType } from '../@types/cardTypes';
 
 interface CardProps {
     details: CardDetailsType,

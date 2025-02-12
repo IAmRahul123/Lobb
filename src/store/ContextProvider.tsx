@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState, useCallback, ReactNode } fro
 import axios from 'axios';
 import { StatusBar } from 'react-native';
 import { GET_POST_URL, GET_TOKEN_URL, MY_EMAIL } from '../config/constants';
+import { CardDetailsType } from '../@types/cardTypes';
 
 // Define types for context values
 interface ContextType {
@@ -9,18 +10,6 @@ interface ContextType {
   cardDetails: CardDetailsType;
   statusBarHeight: number | undefined;
   getCardDetails: () => Promise<void>;
-}
-
-// Define types for the card details structure
-export interface CardDetailsType {
-  thumbNailImage: string;
-  mainImage: string;
-  userName: string;
-  subTitle: string;
-  text: string;
-  id: number;
-  logo: string;
-  title: string;
 }
 
 // Create context
