@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { formatDate } from '../../../utils/formatter'
 import Badge from './Badge'
+import { colors } from '../../../config/colors'
 
 const DateComponent: React.FC = React.memo(() => {
     //get todays date formatted
@@ -36,6 +37,6 @@ const styles = StyleSheet.create({
     todayText: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: '#000',
+        color: colors.BLACK,
     },
 })

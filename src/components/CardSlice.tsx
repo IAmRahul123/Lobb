@@ -1,7 +1,8 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Button from './Button'
-import { CardDetailsType } from '../store/ContextProvider';
+import { colors } from '../config/colors';
+import { CardDetailsType } from '../@types/cardTypes';
 
 interface CardSliceProps {
     details: CardDetailsType;
@@ -57,17 +58,17 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#000'
+        color: colors.BLACK
     },
     subTitle: {
         fontSize: 10,
-        color: '#666'
+        color: colors.LIGHT_GREY_VAR
     },
     actionContainer: {
         alignItems: 'center'
     },
     userName: {
-        color: '#d6d6d6',
+        color: colors.LIGHT_GREY,
         fontSize: 8,
         fontWeight: '800'
     }

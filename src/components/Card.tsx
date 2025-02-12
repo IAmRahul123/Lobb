@@ -10,6 +10,7 @@ import {
 import { height } from '../config/constants';
 import CardSlice from './CardSlice';
 import { CardDetailsType } from '../@types/cardTypes';
+import { colors } from '../config/colors';
 
 interface CardProps {
     details: CardDetailsType,
@@ -37,7 +38,7 @@ const Card: React.FC<CardProps> = React.memo(({
 
 const styles = StyleSheet.create({
     cardContainer: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.WHITE,
         borderRadius: 20,
         elevation: 10,
         width: '100%',

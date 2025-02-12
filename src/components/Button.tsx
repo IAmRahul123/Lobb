@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, ViewStyle, TextStyle } from 'react-native'
 import React, { ReactNode } from 'react'
+import { colors } from '../config/colors';
 
 interface ButtonProps {
     onPress: () => void;
@@ -23,7 +24,7 @@ export default Button
 
 const styles = StyleSheet.create({
     refreshButton: {
-        backgroundColor: '#d6d6d6',
+        backgroundColor: colors.LIGHT_GREY,
         paddingVertical: 4,
         paddingHorizontal: 10,
         borderRadius: 20,

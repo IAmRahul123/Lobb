@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import CardSlice from '../../components/CardSlice';
 import Button from '../../components/Button';
 import { ContextProvider } from '../../store/ContextProvider';
+import { colors } from '../../config/colors';
 
 
 const CardDetails: React.FC = () => {
@@ -146,14 +147,14 @@ const styles = StyleSheet.create({
   separator: {
     width: '100%',
     height: 1,
-    backgroundColor: '#d6d6d6',
+    backgroundColor: colors.LIGHT_GREY,
   },
   contentWrapper: {
     paddingHorizontal: 12,
     marginTop: 12
   },
   detailsContainer: {
-    backgroundColor: '#d6d6d6',
+    backgroundColor: colors.LIGHT_GREY,
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -172,11 +173,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#000',
+    color: colors.BLACK,
   },
   subTitle: {
     fontSize: 10,
-    color: '#666',
+    color: colors.LIGHT_GREY_VAR,
   },
   userName: {
     color: 'grey',
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
   },
   refreshText: {
-    color: '#fff',
+    color: colors.WHITE,
   },
   shareContainer: {
     paddingVertical: 24,
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   shareButton: {
-    backgroundColor: '#d6d6d6',
+    backgroundColor: colors.LIGHT_GREY,
     borderRadius: 0,
     paddingHorizontal: 20,
   },
@@ -208,14 +209,14 @@ const styles = StyleSheet.create({
     top: 20,
     right: 20,
     zIndex: 10,
-    backgroundColor: "#fff",
+    backgroundColor: colors.WHITE,
     height: 30,
     width: 30,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
     elevation: 3,
-    shadowColor: "#000",
+    shadowColor: colors.BLACK,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,

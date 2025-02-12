@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { colors } from '../../../config/colors'
 
 const Badge: React.FC = React.memo(() => {
     return (
@@ -15,12 +16,12 @@ const styles = StyleSheet.create({
     badgeContainer: {
         padding: 8,
         borderRadius: 20,
-        backgroundColor: '#d6d6d6',
+        backgroundColor: colors.LIGHT_GREY,
         alignSelf: 'flex-end',
     },
     badgeText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#000',
+        color: colors.BLACK,
     },
 })
