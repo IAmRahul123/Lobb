@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import React, { useContext } from 'react';
 import Card from '../../components/Card';
 import { useNavigation } from '@react-navigation/native';
@@ -25,11 +25,17 @@ const Home: React.FC = () => {
                 <View style={styles.loaderContainer}>
                     <ActivityIndicator testID='loading-indicator' color={colors.BLACK} />
                 </View>
+                // for  no data show no data text
+                : !cardDetails ?
+                    <View style={styles.loaderContainer}>
+                        <Text style={styles.noDataText}>No Posts</Text>
+                    </View> 
+                // Show Post component if cardDetails exist
                 :
-                <>
-                    <DateComponent name={cardDetails?.userName} />
-                    <Card details={cardDetails} onCardClick={onCardClick} onRefreshPress={getCardDetails} />
-                </>
+                    <>
+                        <DateComponent name={cardDetails?.userName} />
+                        <Card details={cardDetails} onCardClick={onCardClick} onRefreshPress={getCardDetails} />
+                    </>
             }
         </View>
     );
@@ -47,5 +53,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    noDataText: {
+        color: colors.BLACK,
+        fontSize: 14
     }
 });
