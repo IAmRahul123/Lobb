@@ -30,7 +30,9 @@ const ContextProviderComponent: React.FC<ContextProviderProps> = ({ children }) 
         setLoading(true)
         try {
             const res = await axios.post<{ token: string }>(GET_TOKEN_URL, { email: MY_EMAIL });
-            setToken(res.data.token);
+            if (res?.data?.token) {
+                setToken(res.data.token);
+            }
         } catch (error) {
             console.error("Error while generating Token:", error);
         } finally {
@@ -45,7 +47,9 @@ const ContextProviderComponent: React.FC<ContextProviderProps> = ({ children }) 
             const res = await axios.get<{ content: CardDetailsType }>(GET_POST_URL, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            setCardDetails(res.data.content);
+            if (res?.data?.content) {
+                setCardDetails(res.data.content);
+            }
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {

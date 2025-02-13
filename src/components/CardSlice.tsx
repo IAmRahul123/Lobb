@@ -11,10 +11,11 @@ interface CardSliceProps {
 
 const CardSlice: React.FC<CardSliceProps> = React.memo(({ details, onRefreshPress }) => {
     return (
-        <View style={styles.contentContainer}>
+        <View testID='card-slice-container' style={styles.contentContainer}>
             <View style={styles.userInfoContainer}>
                 <Image
-                    source={{uri:details?.logo}}
+                    testID='avatar-image'
+                    source={{ uri: details?.logo }}
                     resizeMode='contain'
                     style={styles.avatarImage}
                 />
@@ -25,7 +26,7 @@ const CardSlice: React.FC<CardSliceProps> = React.memo(({ details, onRefreshPres
             </View>
 
             <View style={styles.actionContainer}>
-                <Button title="REFRESH" onPress={onRefreshPress} />
+                <Button testID='refresh-button' title="REFRESH" onPress={onRefreshPress} />
                 <Text style={styles.userName} numberOfLines={1}>In-App Purchase</Text>
             </View>
         </View>

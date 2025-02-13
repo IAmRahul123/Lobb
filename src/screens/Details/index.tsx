@@ -82,6 +82,7 @@ const CardDetails: React.FC = () => {
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Image
+          testID='main-image'
           source={{ uri: cardDetails?.mainImage }}
           resizeMode="cover"
           style={styles.mainImage}

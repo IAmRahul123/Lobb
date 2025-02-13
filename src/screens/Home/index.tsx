@@ -19,11 +19,11 @@ const Home: React.FC = () => {
     };
 
     return (
-        <View style={[styles.container, { marginTop: (statusBarHeight || 0) + 24 }]}>
+        <View testID='home-container' style={[styles.container, { marginTop: (statusBarHeight || 0) + 24 }]}>
             {/* show loader until API calls end */}
             {loading ?
-                <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-                    <ActivityIndicator color={colors.BLACK}/>
+                <View style={styles.loaderContainer}>
+                    <ActivityIndicator testID='loading-indicator' color={colors.BLACK} />
                 </View>
                 :
                 <>
@@ -43,4 +43,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         gap: 8,
     },
+    loaderContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });

@@ -23,8 +23,9 @@ const Card: React.FC<CardProps> = React.memo(({
     onCardClick = () => { }
 }) => {
     return (
-        <TouchableOpacity style={styles.cardContainer} onPress={onCardClick}>
+        <TouchableOpacity testID='card-container' style={styles.cardContainer} onPress={onCardClick}>
             <Image
+                testID='card-main-image'
                 source={{ uri: details?.mainImage }}
                 resizeMode='cover'
                 style={styles.mainImage}

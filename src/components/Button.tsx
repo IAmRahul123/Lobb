@@ -5,15 +5,16 @@ import { colors } from '../config/colors';
 interface ButtonProps {
     onPress: () => void;
     title: string;
+    testID?: string;
     icon?: ReactNode;
     btnStyle?: ViewStyle;
     textStyle?: TextStyle;
 }
 
 // Custom Button Component with icon (optional) and with customizable styles
-const Button: React.FC<ButtonProps> = React.memo(({ onPress, title, icon = null, btnStyle = {}, textStyle = {} }) => {
+const Button: React.FC<ButtonProps> = React.memo(({ onPress, title, icon = null, btnStyle = {}, textStyle = {}, testID = "" }) => {
     return (
-        <TouchableOpacity style={[styles.refreshButton, btnStyle]} onPress={onPress}>
+        <TouchableOpacity testID={testID} style={[styles.refreshButton, btnStyle]} onPress={onPress}>
             {icon}
             <Text style={[styles.refreshText, textStyle]}>{title}</Text>
         </TouchableOpacity>
